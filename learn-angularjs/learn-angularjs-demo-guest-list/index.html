@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>邀请名单</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
+	<style>
+		.container {
+			margin: 1em auto;
+		}
+		li {
+			float: left;
+		}
+		body {
+			padding: 50px 0;
+		}
+	</style>
+</head>
+
+<body ng-app="guestListApp">
+	<div class="container" ng-controller="guestController">
+		<div class="row pt-3">
+			<h1 class="mx-auto">邀请名单</h1>
+		</div>
+		<div class="row pt-3">
+			<div class="col-md-3">
+				<div class="input-group">
+					<div class="input-group-prepend"><span class="input-group-text">姓名</span></div>
+					<input type="text" class="form-control" ng-model="newGuest.name" placeholder="输入姓名"/>
+				</div>
+			</div>
+			<div class="col-md-7">
+				<div class="input-group">
+					<div class="input-group-prepend"><span class="input-group-text">电话</span></div>
+					<input type="text" class="form-control" ng-model="newGuest.phone" placeholder="输入电话"/>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<input type="button" class="btn btn-success" ng-click="invite(newGuest)" value="邀请"/>
+			</div>
+		</div>
+
+		<div class="row pt-3">
+			<a class="btn btn-success btn-xs mx-1" href="#!/all">显示全部</a>
+			<a class="btn btn-success btn-xs mx-1" href="#!/invite">显示邀请中</a>
+			<a class="btn btn-success btn-xs mx-1" href="#!/accept">显示已接受</a>
+			<a class="btn btn-success btn-xs mx-1" href="#!/refuse">显示已拒绝</a>
+		</div>
+
+		<div class="row pt-3">
+			<table class="table table-bordered table-hover text-center">
+				<thead>
+				<tr>
+					<th>编号</th>
+					<th>嘉宾姓名</th>
+					<th>嘉宾电话</th>
+					<th>受邀状态</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="guest in guestList">
+					<td>{{$index+1}}</td>
+					<td>{{guest.name}}</td>
+					<td>{{guest.phone}}</td>
+					<td>{{guest.inviteState}}</td>
+					<td>
+						<button class="btn btn-xs btn-success"
+						        ng-if="guest.inviteState==InviteState.All" ng-click="accept(guest)">接受邀请
+						</button>
+						<button class="btn btn-xs btn-danger"
+						        ng-if="guest.inviteState==InviteState.All" ng-click="refuse(guest)">拒绝邀请
+						</button>
+						<button class="btn btn-xs btn-secondary"
+						        ng-click="remove(guest)">删除
+						</button>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>

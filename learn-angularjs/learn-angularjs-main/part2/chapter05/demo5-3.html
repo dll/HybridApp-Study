@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>测试点击事件</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<input type="text" ng-value="msg"/>
+		<input type="button" ng-click="click()" value="点击"/>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script>
+		let app = angular.module("app", []);
+		app.service("myService", () => {
+			this.msg = "Hello World!";
+			this.click = () => alert(this.msg);
+		});
+		app.controller("ctrl", ($scope, myService) => {
+			$scope.msg = myService.msg;
+			$scope.click = myService.click;
+		});
+	</script>
+</body>
+</html>

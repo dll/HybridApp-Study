@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>测试ng-style</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="mainController">
+		<div style="height:100px" ng-style="myStyle">
+			做人最重要的就是开心。
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script>
+		let app = angular.module("app", []);
+		app.controller("mainController", ($scope) => {
+			$scope.myStyle = {
+				//"background-color"也可以改写成：backgroundColor，使用驼峰写法
+				"background-color": "yellow",
+				"width": "100px",
+				"font-size": "20px",
+				"padding": "50px",
+			}
+		});
+	</script>
+</body>
+</html>

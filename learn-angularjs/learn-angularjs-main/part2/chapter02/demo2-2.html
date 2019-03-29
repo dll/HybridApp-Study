@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>使用AngularJS的方式实现计数器</title>
+</head>
+
+<!--如果指定ng-app的名称，必须要在js代码中创建该模块-->
+<!--如果不指定ng-app的名称，ws报错但是不影响运行结果-->
+<body ng-app="myApp">
+	<input type="number" ng-model="value" value="0"/>
+	<input type="button" ng-click="value = value+1" value="增加"/>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script>
+		let guestController = angular.module("myApp", []);
+	</script>
+</body>
+</html>

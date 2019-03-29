@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>使用传统方式实现计数器（JQuery）</title>
+</head>
+
+<body>
+	<input type="number" id="txt_value" value="0"/>
+	<input type="button" id="btn_add" value="增加"/>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	<script>
+		let txtValue = $("#txt_value");
+		let btnAdd = $("#btn_add");
+		btnAdd.click(function() {
+			//需要首先-0以从字符串变成数字类型
+			txtValue.val(txtValue.val() - 0 + 1);
+		});
+	</script>
+</body>
+</html>

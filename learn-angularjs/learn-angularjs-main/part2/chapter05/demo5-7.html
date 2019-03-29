@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>使用$watch监听$location</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<a href="#!/all">全部</a>
+		<a href="#!/one">第一个</a>
+		<a href="#!/two">第二个</a>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script>
+		let app = angular.module("app", []);
+		app.controller("ctrl", ($scope, $location) => {
+			$scope.location = $location;
+			//监听的是angular表达式
+			$scope.$watch('location.path()', (newValue, oldValue) => {
+				console.log(`新的地址：${newValue}`);
+			})
+		});
+	</script>
+</body>
+</html>

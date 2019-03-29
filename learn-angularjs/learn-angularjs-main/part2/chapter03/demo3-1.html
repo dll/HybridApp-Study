@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>测试ng-bind</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="mainController">
+		<p>* 使用插值语法取出data的效果</p>
+		<span>{{data}}</span>
+		<p>* 使用ng-bind取出data的效果</p>
+		<span ng-bind="data"></span>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script>
+		let app = angular.module("app", []);
+		app.controller("mainController", ($scope) => {
+			$scope.data = "my data";
+		});
+	</script>
+</body>
+</html>

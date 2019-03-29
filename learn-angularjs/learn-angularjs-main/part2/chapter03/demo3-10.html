@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ng-repeat</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<!--测试ng-repeat指令-->
+		<table>
+			<tr ng-repeat="num in nums">
+				<!--得到当前项-->
+				<td>{{num}}</td>
+				<!--得到当前项的索引-->
+				<td>index:{{$index}}</td>
+				<!--判断当前项是否为第一项-->
+				<td>first:{{$first}}</td>
+				<!--判断当前项是否为最后一项-->
+				<td>last:{{$last}}</td>
+				<!--判断当前项是否为中间项-->
+				<td>middle:{{$middle}}</td>
+				<!--判断当前项是否为奇数项-->
+				<td>odd:{{$odd}}</td>
+				<!--判断当前项是否为偶数项-->
+				<td>even:{{$even}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script>
+		let app = angular.module("app", []);
+		app.controller("ctrl", ($scope) => {
+			$scope.nums = [1, 2, 3]
+		});
+	</script>
+</body>
+</html>

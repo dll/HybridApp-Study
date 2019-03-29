@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>独立作用域</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<user-info user-name="小明" age="num" speak="sayHello(name)"></user-info>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script>
+		let app = angular.module("app", []);
+		//定义父作用域
+		app.controller("ctrl", ($scope) => {
+			$scope.num = '17';
+			$scope.sayHello = (name) => alert(`Hello ${name}`)
+		});
+		//添加自定义指令
+		app.directive("userInfo", () => {
+			return {
+				restrict: 'EA',
+				//为什么参数只能是所有参数组成的对象？
+				template: `
+姓名：<input type="text" ng-model="userName"><br/>
+年龄：{{age}}<br/>
+<button class="btn btn-default" ng-click="speak({name:userName})">speaking</button><br/>
+				`,
+				scope: {userName: "@", age: "=", speak: "&"}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>演示AngularJS表达式的具体用法</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<div ng-app="demo">
+		<div ng-controller="MainController">
+			<!-- hello -->
+			{{msg}}
+			<br>
+			<!-- hello world -->
+			{{msg+'world'}}
+			<br>
+			<!-- 2 -->
+			{{num+1}}
+			<br>
+			<!-- 1 -->
+			{{fn()}}
+			<br>
+			<!-- 1+5 -->
+			{{fn()+5}}
+			<br>
+			<!-- 三目运算 -->
+			{{boolean?1:5}}
+			<br>
+			<!-- 数组 -->
+			{{arr[2]}}
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
+	<script>
+		let guestController = angular.module('demo', []);
+		//定义MainController控制器
+		guestController.controller('MainController', function($scope) {
+			$scope.msg = 'hello';
+			$scope.num = 1;
+			$scope.fn = () => 1;
+			$scope.boolean = true;
+			$scope.arr = [1, 2, 3, 4, 5];
+		});
+	</script>
+</body>
+</html>

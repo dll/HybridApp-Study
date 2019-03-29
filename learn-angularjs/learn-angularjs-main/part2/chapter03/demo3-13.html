@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ng-cloak</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular-csp.css"/>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<span ng-cloak="">{{name}}</span>
+		<!--ng-cloak：用于解决应用加载时，因代码未加载完成而出现闪烁的问题。-->
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script>
+		let app = angular.module("app", []);
+		app.controller("ctrl", ($scope) => {
+			$scope.name = "Alex";
+		});
+	</script>
+</body>
+</html>

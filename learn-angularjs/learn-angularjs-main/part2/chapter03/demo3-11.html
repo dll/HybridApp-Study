@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>测试AngularJS自定义指令</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<my-directive></my-directive>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script>
+		let app = angular.module("app", []);
+		app.controller("ctrl", ($scope) => {
+			$scope.helloWorld = "HelloWorld!";
+		});
+		//自定义指令。
+		//参数：指令名的驼峰写法，返回新指令的回调函数
+		//回调函数的返回值：一个对象。
+		//返回值的参数：
+		//template属性：模版，restrict：限制使用，可选E、A、C、M，默认EA
+		//replace：是否覆盖原有的标签
+		app.directive("myDirective", () => {
+			return {
+				template: `<h1>自定义指令！</h1>
+					{{helloWorld}}
+				`.trim(),
+				restrict: "E",
+				replace: false
+			}
+		})
+	</script>
+</body>
+</html>

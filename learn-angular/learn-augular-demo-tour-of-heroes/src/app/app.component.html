@@ -1,0 +1,12 @@
+<!--项目主组件的模版-->
+<!--注入项目标题-->
+<h1>{{title}}</h1>
+<!--配置路由导航-->
+<nav>
+	<a routerLink="/dashboard">Dashboard</a>
+	<a routerLink="/heroes">Heroes</a>
+</nav>
+<!--引入另一个组件-->
+<router-outlet></router-outlet>
+<!--引入另一个组件-->
+<app-messages></app-messages>

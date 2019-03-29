@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "/learn-angularjs/learn-angularjs-main-test/jsonSchemaTest.json",
+
+  "properties": {
+    "Name": {
+      "title": "A name",
+      "description": "A name.\nThe second line.",
+      "type": "string"
+    }
+  },
+
+  "required": []
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>测试AngularJS的路由</title>
+</head>
+<body ng-app="app">
+	<div>
+		<a href="#!/index">index</a>
+		<a href="#!/first">first</a>
+		<a href="#!/about/2/lucy">lucy</a>
+		<a href="#!/about/3/banny">banny</a>
+		<ng-view/>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular-route.js"></script>
+	<script>
+		//WARN 不能在AngularJS中的任何地方使用箭头函数，因为AngularJS通过new myFn()的方式调用匿名函数。
+		//WARN 但是有些地方使用箭头函数没有影响，猜测只针对用于自动依赖注入的匿名方法，即没有指定依赖的名字，不能使用。
+		let app = angular.module("app", ["ngRoute"]);
+		app.config($routeProvider => {
+			$routeProvider
+			.when("/index", {
+				template: "<h2>{{name}}</h2>",
+				controller: function($scope) {
+					return $scope.name = "index";
+				}
+			})
+			.when("/first", {
+				templateUrl: "demo5-7.html"
+			})
+			.when("/about/:id/:name", {
+				template: "<h2>{{params}}</h2>",
+				controller: function($scope, $routeParams) {
+					return $scope.params = $routeParams;
+				}
+			})
+			.otherwise({
+				redirectTo: "/index"
+			});
+		});
+	</script>
+</body>
+</html>

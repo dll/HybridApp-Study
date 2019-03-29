@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>模块和控制器</title>
+</head>
+
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		<span>{{name}}</span>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script>
+		//创建AngularJS模块，参数：名字，依赖数组
+		let guestController = angular.module("myApp", []);
+		//注入AngularJS模块对应的控制器，参数：名字，回调函数（可传参）/依赖项和回调函数组成的数组
+		//传入$scope参数以初始化AngularJS变量（包括方法）
+		guestController.controller("myCtrl", ($scope) => {
+			/**名字*/
+			$scope.name = "Windea";
+		})
+	</script>
+</body>
+</html>

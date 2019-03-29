@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>求证作用域的嵌套</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<div ng-app="demo">
+		<div ng-controller="MainController">
+			<p>* ng-controller="MainController"作用域显示结果：</p>
+			<span>{{mData}}</span>
+			<span>{{dData}}</span>
+			<div ng-controller="DataController">
+				<p>* ng-controller="DataController"作用域显示结果：</p>
+				<span>{{mData}}</span>
+				<span>{{dData}}</span>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
+	<script>
+		let guestController = angular.module('demo', []);
+		//定义MainController控制器
+		guestController.controller('MainController', function($scope) {
+			$scope.mData = "hello MainController";
+		});
+		//定义DataController控制器
+		guestController.controller('DataController', function($scope) {
+			$scope.dData = "hello DataController";
+		});
+	</script>
+</body>
+</html>

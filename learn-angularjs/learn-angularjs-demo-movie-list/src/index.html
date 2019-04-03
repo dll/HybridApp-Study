@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>电影列表</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css"/>
+
+</head>
+<body ng-app="ApplicationModule">
+	<ng-view/>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular-route.js"></script>
+
+	<script src="app/application.config.js"></script>
+	<script src="app/movie-detail/movie-detail.controller.js"></script>
+	<script src="app/movie-list/movie-list.controller.js"></script>
+	<script src="app/page-config/page-config.service.js"></script>
+	<script src="app/jsonp/jsonp.service.js"></script>
+	<script src="app/model/model.service.js"></script>
+</body>
+</html>

@@ -13,27 +13,28 @@ const httpOptions = {
 };
 
 //英雄的服务类，包含异步操作，需要用到管道
-//注入元数据
+//注入元数据（从根作用域）
 //NOTE @Injectable是通过类型注入，而非名称
 @Injectable({providedIn: 'root'})
 export class HeroService {
-
     private heroesUrl = 'api/heroes';  // URL to web api
 
     //在初始化类时注入属性，省略外面的属性声明
+    //NOTE 构造方法最好只用于初始化注入，其他操作写在ngInit方法中，并实现OnInit接口
     constructor(
         private http: HttpClient,
         private messageService: MessageService) {
     }
 
-    /** GET heroes from the server */
     //从服务器得到英雄数组，返回的是可观察泛型对象，类似约定泛型对象
     getHeroes(): Observable<Hero[]> {
         //创建get请求，传递json数据，返回指定类型的请求主体
-        //接着进行管道传传输
+        //接着进行管道传传输，忽略参数
         return this.http.get<Hero[]>(this.heroesUrl)
             .pipe(
+                //每次Tick的操作？
                 tap(_ => this.log('fetched heroes')),
+                //捕获到错误后的操作
                 catchError(this.handleError<Hero[]>('getHeroes', [])),
             );
     }
@@ -43,6 +44,7 @@ export class HeroService {
         const url = `${this.heroesUrl}/?id=${id}`;
         return this.http.get<Hero[]>(url)
             .pipe(
+                //这个映射操作对于整个数组只保留返回第一个元素
                 map(heroes => heroes[0]), // returns a {0|1} element array
                 tap(h => {
                     const outcome = h ? `fetched` : `did not find`;
@@ -63,6 +65,7 @@ export class HeroService {
 
     /* GET heroes whose name contains search term */
     searchHeroes(term: string): Observable<Hero[]> {
+        //如果term为null、为空，则返回空数组可观察对象
         if (!term.trim()) {
             // if not search term, return empty hero array.
             return of([]);
@@ -117,6 +120,7 @@ export class HeroService {
             // TODO: better job of transforming error for user consumption
             this.log(`${operation} failed: ${error.message}`);
 
+            //返回空对象，以让程序继续运行
             // Let the app keep running by returning an empty result.
             return of(result as T);
         };

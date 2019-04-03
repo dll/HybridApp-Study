@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>测试model层</title>
+</head>
+<body>
+	<div ng-app="TestModule">
+		<div ng-controller="TestController"></div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+	<script src="../src/app/jsonp/jsonp.service.js"></script>
+	<script src="../src/app/model/model.service.js"></script>
+	<script>
+		let testModule = angular.module("TestModule", ["JsonpModule", "ModelModule"]);
+		testModule.controller("TestController", function($scope, $http, ModelService) {
+			ModelService.getTop250(0, 10, function(data) {
+				console.log(data)
+			});
+		});
+	</script>
+</body>
+</html>

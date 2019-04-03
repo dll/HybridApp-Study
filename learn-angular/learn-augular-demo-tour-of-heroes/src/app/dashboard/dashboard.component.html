@@ -1,5 +1,6 @@
 <h3>Top Heroes</h3>
 <div class="grid grid-pad">
+	<!--遍历英雄数组，生成链接，显示英雄的名字-->
 	<a *ngFor="let hero of heroes" class="col-1-4"
 	   routerLink="/detail/{{hero.id}}">
 		<div class="module hero">
@@ -8,4 +9,5 @@
 	</a>
 </div>
 
+<!--引入另一个组件-->
 <app-hero-search></app-hero-search>

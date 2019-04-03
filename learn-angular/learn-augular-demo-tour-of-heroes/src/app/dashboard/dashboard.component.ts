@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
 
+//仪表盘的组件
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',

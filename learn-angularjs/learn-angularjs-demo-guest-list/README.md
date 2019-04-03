@@ -2,7 +2,8 @@
 
 AngularJS Demo项目：一个简单的邀请名单应用。
 
-来自《HTML5混合App开发》。
+* 来自《HTML5混合App开发》。
+* AngularJS可以逼死强迫症。
 
 # 要点
 

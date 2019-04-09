@@ -14,14 +14,14 @@
 		<div class="row">
 			<div class="col-md-10 p-3">
 				<ul class="nav nav-tabs">
-					<li ng-class="{active:pager.category=='in_theaters'}">
-						<a href="#!/list/in_theaters/1">正在热映</a>
+          <li class="nav-item" ng-class="{active:pager.category=='in_theaters'}">
+            <a class="nav-link" href="#!/list/in_theaters/1">正在热映</a>
 					</li>
-					<li ng-class="{active:pager.category=='coming_soon'}">
-						<a href="#!/list/comming_soon/1">即将上映</a>
+          <li class="nav-item" ng-class="{active:pager.category=='coming_soon'}">
+            <a class="nav-link" href="#!/list/comming_soon/1">即将上映</a>
 					</li>
-					<li ng-class="{active:pager.category=='top250'}">
-						<a href="#!/list/top250/1">前250名</a>
+          <li class="nav-item" ng-class="{active:pager.category=='top250'}">
+            <a class="nav-link" href="#!/list/top250/1">前250名</a>
 					</li>
 				</ul>
 			</div>
@@ -33,11 +33,11 @@
 		<div class="row">
 			<div class="col-md-12 p3">
 				<ol class="breadcrumb">
-					<li><a href="#">电影列表</a></li>
-					<li><a href="#">
+          <li class="breadcrumb-item"><a href="#">电影列表</a></li>
+          <li class="breadcrumb-item"><a href="#">
 						{{pager.category == "top250"?"前250名":pager.category=="coming_soon"?"即将上映":"正在热映"}}
 					</a></li>
-					<li class="active"><a href="#">第{{pager.current}}页,共{{pager.total}}页</a></li>
+          <li class="breadcrumb-item active"><a href="#">第{{pager.current}}页,共{{pager.total}}页</a></li>
 				</ol>
 			</div>
 		</div>
@@ -53,17 +53,15 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-md-12 p-3">
-				<ul class="pagination mx-auto">
-					<li>
-						<a ng-href="#!/list/{{pager.category}}/{{pager.prev}}"><span>&laquo;上一页</span></a>
-					</li>
-					<li>
-						<a ng-href="#!/list/{{pager.category}}/{{pager.next}}"><span>下一页&raquo;</span></a>
-					</li>
-				</ul>
-			</div>
+    <div class="row m-3">
+      <ul class="pagination m-auto">
+        <li class="page-item">
+          <a class="page-link" ng-href="#!/list/{{pager.category}}/{{pager.prev}}"><span>&laquo;上一页</span></a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" ng-href="#!/list/{{pager.category}}/{{pager.next}}"><span>下一页&raquo;</span></a>
+        </li>
+      </ul>
 		</div>
 	</div>
 </div>

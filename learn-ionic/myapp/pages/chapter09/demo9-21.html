@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <title>列表中嵌入头像</title>
+  <title>文本选项卡</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <link rel="stylesheet" href="../../www/lib/ionic/css/ionic.min.css">
 </head>
 <body>
-<div class="list">
-  <a class="item item-icon-left" href="#">
-    <i class="icon ion-android-person-add"></i>
-    添加好友
+<div class="tabs tabs-stable tabs-color-dark">
+  <!--添加.tabs-striped，为选项提供指示条-->
+  <a class="tabs-item active tab-item-balanced">
+    <b>消息</b>
   </a>
-  <a class="item item-icon-left" href="#">
-    <i class="icon ion-android-people"></i>
-    群聊
+  <a class="tabs-item">
+    <b>联系人</b>
+  </a>
+  <a class="tabs-item disabled">
+    动态
   </a>
 </div>
 </body>

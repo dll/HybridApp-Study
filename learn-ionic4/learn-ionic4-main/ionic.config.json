@@ -1,0 +1,8 @@
+{
+	"name": "learn-ionic4-main",
+	"integrations": {
+		"capacitor": {},
+		"cordova": {}
+	},
+	"type": "angular"
+}

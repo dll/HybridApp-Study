@@ -51,7 +51,7 @@
       <option name="ARRAY_WRAPPING" value="1" />
     </JSON>
     <MarkdownNavigatorCodeStyleSettings>
-      <option name="RIGHT_MARGIN" value="72" />
+      <option name="RIGHT_MARGIN" value="120" />
     </MarkdownNavigatorCodeStyleSettings>
     <DBN-PSQL>
       <case-options enabled="true">

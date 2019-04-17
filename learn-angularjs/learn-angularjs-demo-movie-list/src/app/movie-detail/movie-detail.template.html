@@ -4,6 +4,7 @@
 		padding: 20px;
 		margin-top: 50px;
 	}
+
 	.ml-summary {
 		font-size: larger;
 	}
@@ -11,24 +12,19 @@
 
 <!--电影详情的模版-->
 <div class="container ml-detail-page">
-	<div class="row">
-		<div class="col-md-12 P-3">
-			<h1>{{data.title}}</h1>
+	<div class="media media">
+		<h1>{{data.title}}</h1>
+
+		<div class="img-thumbnail align-self-start p-3">
+			<img ng-src="https://images.weserv.nl/?url={{data.images.large.substring(7)}}" alt="{{subject.title}}"/>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4 p-3">
-			<div class="img-thumbnail">
-				<img ng-src="{{data.images.large}}" alt="{{subject.title}}"/>
-			</div>
-		</div>
-		<div class="col-md-8 p-3">
+
+		<div class="media-body p-3">
 			<article class="ml-summary">{{data.summary}}</article>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4 offset-4 p-3">
-			<a href="javascript:history.go(-1)" class="btn btn-primary btn-block">返回</a>
+			<hr/>
+			<div class="text-center m-auto p-3">
+				<a href="javascript:history.back()" class="btn btn-primary btn-block">返回</a>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,63 +1,66 @@
 <style>
-	.ml-img-thumbnail {
-		height: 260px;
-		overflow-y: hidden
-	}
+  .ml-img-thumbnail {
+    height: 260px;
+    overflow-y: hidden
+  }
 </style>
 
 <!--电影列表页面的模版-->
 <div class="container">
-	<!--加载提示-->
-	<div class="row m-3" ng-if="loading">
-		<div class="alert alert-info m-center">
-			<strong>正在加载中……</strong>
-		</div>
-	</div>
+  <!--加载提示-->
+  <div class="row m-3" ng-if="loading">
+    <div class="alert alert-info m-center">
+      <strong>正在加载中……</strong>
+    </div>
+  </div>
 
-	<div ng-if="!loading">
-		<!--导航栏-->
-		<nav class="navbar navbar-expand-md">
-			<a class="navbar-brand mx-3">电影列表</a>
+  <div ng-if="!loading">
+    <!--导航栏-->
+    <nav class="navbar navbar-expand-md">
+      <a class="navbar-brand mx-3">电影列表</a>
 
-			<ul class="navbar-nav mx-3">
-				<li class="nav-item" ng-class="{active:pager.category=='in_theaters'}">
-					<a class="nav-link" href="#!/list/in_theaters/1">正在热映</a>
-				</li>
-				<li class="nav-item" ng-class="{active:pager.category=='coming_soon'}">
-					<a class="nav-link" href="#!/list/comming_soon/1">即将上映</a>
-				</li>
-				<li class="nav-item" ng-class="{active:pager.category=='top250'}">
-					<a class="nav-link" href="#!/list/top250/1">前250名</a>
-				</li>
-			</ul>
-		</nav>
+      <ul class="navbar-nav mx-3">
+        <li class="nav-item" ng-class="{active:pager.category=='in_theaters'}">
+          <a class="nav-link" href="#!/list/in_theaters/1">正在热映</a>
+        </li>
+        <li class="nav-item" ng-class="{active:pager.category=='coming_soon'}">
+          <a class="nav-link" href="#!/list/coming_soon/1">即将上映</a>
+        </li>
+        <li class="nav-item" ng-class="{active:pager.category=='top250'}">
+          <a class="nav-link" href="#!/list/top250/1">前250名</a>
+        </li>
+      </ul>
+    </nav>
 
-		<!--面包屑导航-->
-		<div class="row m-3">
-			<div class="col-md-12 p3">
-				<ol class="breadcrumb">
+    <!--面包屑导航-->
+    <div class="row m-3">
+      <div class="col-md-12">
+        <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">电影列表</a></li>
           <li class="breadcrumb-item"><a href="#">
-	          {{pager.category == "top250"?"前250名":pager.category=="coming_soon"?"即将上映":"正在热映"}}
+            {{pager.category == "top250"?"前250名":pager.category=="coming_soon"?"即将上映":"正在热映"}}
           </a></li>
           <li class="breadcrumb-item active"><a href="#">第{{pager.current}}页,共{{pager.total}}页</a></li>
-				</ol>
-			</div>
-		</div>
+        </ol>
+      </div>
+    </div>
 
-		<!--内容-->
-		<div class="row m-3">
-			<div class="col-md-4 p-1" ng-repeat="subject in data.subjects">
-				<div class="img-thumbnail">
-					<img class="ml-img-thumbnail" ng-src="{{subject.images.large}}" alt="{{subject.title}}"/>
-					<div class="caption text-center">
-						<a ng-href="#!/detail/{{subject.id}}">{{subject.title}}</a>
-					</div>
-				</div>
-			</div>
-		</div>
+    <!--内容-->
+    <div class="row m-3">
+      <div class="col-md-4 p-3" ng-repeat="subject in data.subjects">
+        <div class="card">
+          <img class="card-img-top" ng-src="https://images.weserv.nl/?url={{subject.images.large.substring(7)}}"
+               alt="{{subject.title}}"/>
+          <div class="card-body">
+            <div class="card-title text-center">
+              <a ng-href="#!/detail/{{subject.id}}">{{subject.title}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<!--分页导航-->
+    <!--分页导航-->
     <div class="row m-3">
       <ul class="pagination m-auto">
         <li class="page-item">
@@ -68,5 +71,5 @@
         </li>
       </ul>
     </div>
-	</div>
+  </div>
 </div>

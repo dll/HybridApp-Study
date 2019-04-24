@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>头部和底部</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+</head>
+
+<body ng-app="starter">
+<!--NOTE
+    prop align-title left|right|center 设置标题的对齐方式
+    prop no-tap-scroll bool 单击标题是否自动滚到到起始位置
+-->
+<!--.bar-header可以不添加-->
+<ion-header-bar align-title="left" class="bar-positive">
+  <button class="button">消息</button>
+  <h4 class="title">这里是顶部</h4>
+  <button class="button">签到</button>
+</ion-header-bar>
+<ion-header-bar class="bar-subheader bar-energized">
+  <h4 class="title">次级顶栏</h4>
+</ion-header-bar>
+
+<!--添加内容的位置-->
+
+<ion-footer-bar class="bar-subfooter bar-energized">
+  <h4 class="title">次级底栏</h4>
+</ion-footer-bar>
+<ion-footer-bar align-title="right" class="bar-positive">
+  <button class="button">推荐</button>
+  <h4 class="title">这里是底部</h4>
+  <button class="button">设置</button>
+</ion-footer-bar>
+
+<script src="../../lib/ionic/js/ionic.bundle.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

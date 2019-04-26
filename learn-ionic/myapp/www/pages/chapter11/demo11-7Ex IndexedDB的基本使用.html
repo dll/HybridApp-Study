@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>IndexedDB的基本使用</title>
+  <link href="https://unpkg.com/@ionic/core@4.0.2/css/ionic.bundle.css" rel="stylesheet">
+  <script src="https://unpkg.com/@ionic/core@4.0.2/dist/ionic.js"></script>
+</head>
+<body>
+  IndexedDB的基本使用
+  <script>
+    //定义数据库的基本信息
+    /**数据库的基本信息*/
+    let dbInfo = {
+      /**数据库名称*/
+      dbName: "indexDBDemo",
+      /**数据库版本号，使用整数*/
+      dbVersion: 2010,
+      /**数据库实例*/
+      dbInstance: {}
+    };
+
+    //创建数据库
+    /**数据库请求对象*/
+    let dbContent = window.indexedDB.open(dbInfo.dbName, dbInfo.dbVersion);
+
+    //如果数据库名称和版本号相同，那么该方法只会执行一次，执行完之后会自动执行onsuccess方法
+    dbContent.onupgradeneeded = function (event) {
+      //获取数据库对象
+      let db = event.target.result;
+      //获取数据库实例中所有的Object Store的名字
+      let storeNames = db.objectStoreNames;
+      //如果不存在则创建，并设置键的路径和是否自增
+      if (!storeNames.contains("User")) {
+        db.createObjectStore("User", {
+          keyPath: "id",
+          autoIncrement: true
+        });
+      }
+    };
+
+    //数据库连接成功时的回调函数（数据库的增删查改操作）
+    dbContent.onsuccess = function (event) {
+      console.log("数据库连接成功！");
+      //增删查改操作，开启事务，每次只能进行一个操作
+      let db = event.target.result;
+      //调用数据库的transaction方法开启事务
+      //参数：Object Store的名字（数组），可读性readonly/readwrite
+      let tx = db.transaction("User", "readwrite");
+      //调用事务的Object Store方法获取对象
+      //参数：Object Store的名字
+      let objStore = tx.objectStore("User");
+
+      //新添加的数据中必须有一个字段和keyPath中的名字相同
+      //在获取数据库对象后可以连续执行多个增删查改方法，但是onsuccess和onerror事件只能监听到最后一次执行的方法的返回结果
+
+      //STEP 添加数据
+      let request_add = objStore.add({
+        id: "1",
+        name: "Windea",
+        gender: "Female",
+        race: "WindKid",
+        age: {"value": 4500, "attachType": "RequiriumJewelry"}
+      });
+
+      //STEP 更新数据（有则更新，无则添加）
+      /*let request_put = objStore.add({
+        id: "1",
+        name: "Windea",
+        gender: "Female",
+        race: "WindKid",
+        age: {"value": 4500, "attachType": "RequiriumJewelry"}
+      });*/
+
+      //STEP 根据id查询数据
+      /*let request_get = objStore.get("1");
+			request_get.onsuccess = function(event) {
+				let result = event.target.result;
+				console.log("查询数据成功！");
+				console.log(result.value);
+			};*/
+
+      //STEP 根据id删除数据
+      /*let request_delete = objStore.delete("1");
+      request_delete.onsuccess = function() {
+        console.log("删除数据成功！");
+      };*/
+
+      //STEP 使用openCursor()方法遍历数据
+      /*	let data = [];
+        let cursor = objStore.openCursor();
+        cursor.onsuccess = function(event) {
+          /!**@type {IDBCursorWithValue}*!/
+          let result = event.target.result;
+          //如果查询结果不为空，则将查询结果加入data数组
+          if(result) {
+            data.push(result.value);
+            //重新执行onsuccess句柄
+            result.continue();
+          }
+        };
+        console.log(data);*/
+
+      //数据库添加成功的回调函数
+      request_add.onsuccess = function () {
+        console.log("数据添加成功！");
+      };
+      request_add.onerror = function () {
+        console.log("数据库添加失败！");
+      };
+    };
+
+    //数据库连接失败时的回调函数
+    dbContent.onerror = function () {
+      console.log("数据库连接失败！");
+    }
+
+  </script>
+</body>
+</html>

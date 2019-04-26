@@ -36,7 +36,24 @@
   }
 </style>
 <body ng-app="starter">
+  <!--NOTE
+      prop delegate-handle str 该句柄用$ionicSlideBoxDelegate来标志这个滑动框
+      prop does-continue bool 是否允许循环切换
+      prop auto-play bool 是否自动播放
+      prop slide-interval number 自动播放的间隔。默认为4000ms
+      prop show-pager bool 是否显示分页器
+      event pager-click exp 当点击页面时触发
+      event on-slide-changed exp 当滑动时触发
+      event active-slide exp 将模型绑定到当前滑动框
 
+      method $ionicSlideBoxDelegate.update() 重绘幻灯片。当容器尺寸发生变化时需要调用
+      method $ionicSlideBoxDelegate.slide(to: int, speed?: int) 切换到指定幻灯片
+      method $ionicSlideBoxDelegate.enableSlide(shouldEnable?: bool) 是否应当启用幻灯片
+      method $ionicSlideBoxDelegate.previous() 切换到前一张幻灯片
+      method $ionicSlideBoxDelegate.next() 切换到后一张幻灯片
+      method $ionicSlideBoxDelegate.currentIndex()
+      method $ionicSlideBoxDelegate.slideCount()
+  -->
 <ion-slide-box auto-play="true">
   <ion-slide>
     <div class="box blue"><h1>全世界的好东西</h1></div>

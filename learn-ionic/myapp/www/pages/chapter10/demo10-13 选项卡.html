@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>选项卡</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+</head>
+<body ng-app="starter">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+
+  <ion-tabs class="tabs-icon-top tabs-color-active-positive">
+    <!--NOTE
+        prop icon css-class
+        prop icon-on css-class
+        prop icon-off css-class
+        prop badge exp 选项卡上的徽章
+        prop badge-style css-class
+        prop hidden bool|bool-exp
+        prop disabled bool|bool-exp
+        event on-select exp
+        event on-deselect exp
+
+        method $ionicTabsDelegate.select(index: int) 选中指定的选项卡。索引从0开始
+        method $ionicTabsDelegate..selectedIndex() 返回当前选中选项卡的索引，没有则返回-1
+        method $ionicTabsDelegate.$getByHandle(handle: str) 返回参数所指定的选项卡实例
+    -->
+    <!--Dashboard Tab-->
+    <ion-tab title="Status" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/dash">
+      <ion-nav-view name="tab-dash"></ion-nav-view>
+    </ion-tab>
+
+    <!--Chats Tab-->
+    <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-charboxed" href="#/chats">
+      <ion-nav-view name="tab-chats"></ion-nav-view>
+    </ion-tab>
+
+    <!--Account Tab-->
+    <ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/account">
+      <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+
+  <!--模版-->
+  <script id="template/tab-dash.html" type="text-ng-template">
+    <ion-view view-title="Dashboard">
+      <ion-content class="calm-bg"></ion-content>
+    </ion-view>
+  </script>
+
+  <script id="template/tab-chats.html" type="text-ng-template">
+    <ion-view view-title="Chats">
+      <ion-content class="royal-bg"></ion-content>
+    </ion-view>
+  </script>
+
+  <script id="template/tab-account.html" type="text-ng-template">
+    <ion-view view-title="Account">
+      <ion-content class="positive-bg"></ion-content>
+    </ion-view>
+  </script>
+
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    angular.module("starter", ["ionic"]).controller("myCtrl", function ($stateProvider, $urlRouterProvider) {
+      $stateProvider
+      .state("dash", {
+        url: "/dash",
+        templateUrl: "template/tab-dash.html"
+      })
+      .state("chats", {
+        url: "/chats",
+        templateUrl: "template/tab-chats.html"
+      })
+      .state("account", {
+        url: "/account",
+        templateUrl: "template/tab-account.html"
+      });
+      $urlRouterProvider.otherwise("/dash");
+    })
+
+  </script>
+
+  <!--NOTE 使用$ionic服务管理历史记录
+  method $ionicHistory.viewHistory() 返回视图访问历史数据
+  method $ionicHistory.currentView() 返回当前视图对象
+  method $ionicHistory.currentHistoryId()
+  method $ionicHistory.currentTitle(val?: str) 读写当前视图的标题
+  method $ionicHistory.backView() 返回前一个视图对象
+  method $ionicHistory.backTitle()
+  method $ionicHistory.forwardView()
+  method $ionicHistory.forwardTitle()
+  method $ionicHistory.goBack()
+  method $ionicHistory.clearHistory()
+  method $ionicHistory.clearCache()
+  method $ionicHistory.nextViewOptions(options?: object) 设置后续视图切换选项
+    disableAnimate bool 在后续的转场中禁止动画
+    disableBack bool 后续的视图将不能回退
+    historyRoot bool 下一个视图将会作为历史栈的根节点
+  -->
+</body>
+</html>

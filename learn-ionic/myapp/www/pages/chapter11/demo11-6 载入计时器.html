@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>载入计时器</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+</head>
+<body ng-app="starter" ng-controller="myCtrl">
+  <ion-view>
+    <ion-header-bar class="royal-bg">
+      <h1 class="title">菜品种类</h1>
+    </ion-header-bar>
+    <ion-content class="has-header">
+      <ion-list>
+        <ion-item ng-repeat="item in foods" href="#">{{item.name}}</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-view>
+
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    angular.module("starter", ["ionic"]).controller("myCtrl", function ($scope, $timeout, $ionicLoading) {
+      //显示载入定时器
+      $ionicLoading.show({
+        content: "Loading",
+        animation: "fade-in",
+        showBckdrop: true,
+        maxWidth: 200,
+        showDelay: 0
+      });
+      //定时器设置加载列表内容后隐藏载入计时器
+      $timeout(function () {
+        $scope.foods = [
+          {name: "鱼丸"},
+          {name: "牛肉"},
+          {name: "菠菜"}
+        ];
+      }, 2000);
+    })
+  </script>
+</body>
+</html>

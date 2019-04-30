@@ -1,0 +1,31 @@
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+  <!--NOTE
+      prop icon css-class
+      prop icon-on css-class
+      prop icon-off css-class
+      prop badge exp 选项卡上的徽章
+      prop badge-style css-class
+      prop hidden bool|bool-exp
+      prop disabled bool|bool-exp
+      event on-select exp
+      event on-deselect exp
+
+      method $ionicTabsDelegate.select(index: int) 选中指定的选项卡。索引从0开始
+      method $ionicTabsDelegate..selectedIndex() 返回当前选中选项卡的索引，没有则返回-1
+      method $ionicTabsDelegate.$getByHandle(handle: str) 返回参数所指定的选项卡实例
+  -->
+  <!--Dashboard Tab-->
+  <ion-tab title="Status" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" ui-sref="dash">
+    <ion-nav-view name="tab-dash"></ion-nav-view>
+  </ion-tab>
+
+  <!--Chats Tab-->
+  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" ui-sref="chats">
+    <ion-nav-view name="tab-chats"></ion-nav-view>
+  </ion-tab>
+
+  <!--Account Tab-->
+  <ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ui-sref="account">
+    <ion-nav-view name="tab-account"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>

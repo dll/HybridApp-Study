@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>浮动框</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+</head>
+<body ng-app="starter" ng-controller="myCtrl">
+  <ion-header-bar class="positive-bg">
+    <button class="button" ng-click="showPopover($event)">显示浮动框</button>
+  </ion-header-bar>
+
+  <script id="template.html" type="text/ng-template">
+    <ion-popover-view class="has-header">
+      <ion-content>
+        <ion-list>
+          <ion-item class="icon icon-left ion-person-stalker">发起群聊</ion-item>
+          <ion-item class="icon icon-left ion-person-add">添加朋友</ion-item>
+          <ion-item class="icon icon-left ion-qr-scanner">扫一扫</ion-item>
+          <ion-item class="icon icon-left ion-social-yen">收付款</ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-popover-view>
+  </script>
+
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    angular.module("starter", ["ionic"]).controller("myCtrl", function ($scope, $ionicPopover) {
+      //自定义浮动框
+      $ionicPopover.fromTemplateUrl("template.html", {
+        scope: $scope
+      }).then(function (popover) {
+        $scope.popover = popover
+      });
+      //显示浮动框
+      $scope.showPopover = function ($event) {
+        $scope.popover.show($event)
+      }
+    })
+  </script>
+</body>
+</html>

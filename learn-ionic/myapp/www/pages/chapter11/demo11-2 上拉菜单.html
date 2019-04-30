@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>上拉菜单</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+</head>
+<body ng-app="starter" ng-controller="myCtrl">
+  <!--NOTE
+  options对象的属性
+  prop titleText str 上拉菜单的标题文本
+  prop buttons object[] 按钮的对象数组，包含text属性
+  prop cancelText str
+  prop destructiveText str
+  prop buttonClicked exp
+  prop cancel exp
+  prop destructiveButtonClicked exp
+  prop cancelOnStateChange bool 当切换到新视图时是否关闭此上拉菜单
+  prop cssClass css-class 附加的css样式类
+  -->
+  <ion-pane>
+    <ion-content>
+      <button class="button-button-positive" ng-click="show()">单击显示上拉菜单</button>
+    </ion-content>
+  </ion-pane>
+
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    angular.module("starter", ["ionic"])
+    .controller("myCtrl", function ($scope, $ionicActionSheet, $timeout) {
+      $scope.show = function () {
+        let hideSheet = $ionicActionSheet.show({
+          buttons: [
+            {text: "分享"},
+            {text: "举报"}
+          ],
+          destructiveButtonText: "删除",
+          cancelText: "取消",
+          cancel: function () {
+            console.log("取消操作。");
+          },
+          buttonClicked: function () {
+            console.log("上拉菜单关闭。");
+          },
+          destructiveButtonClicked: function () {
+            console.log("单击删除按钮。");
+          }
+        });
+
+        $timeout(function () {
+          hideSheet();
+        }, 2000);
+      };
+    })
+  </script>
+</body>
+</html>

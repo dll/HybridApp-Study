@@ -21,7 +21,7 @@
   -->
   <ion-pane>
     <ion-content>
-      <button class="button-button-positive" ng-click="show()">单击显示上拉菜单</button>
+      <button class="button button-positive" ng-click="show()">单击显示上拉菜单</button>
     </ion-content>
   </ion-pane>
 
@@ -41,6 +41,7 @@
           cancel: function () {
             console.log("取消操作。");
           },
+          //这里可以注入参数index
           buttonClicked: function () {
             console.log("上拉菜单关闭。");
           },

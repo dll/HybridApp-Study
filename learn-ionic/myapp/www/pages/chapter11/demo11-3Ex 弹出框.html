@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>弹出框</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+</head>
+<body ng-app="starter" ng-controller="myCtrl">
+  <button class="button button-balanced" ng-click="showPopup()">自定义</button>
+  <button class="button button-dark" ng-click="showConfirm()">确认</button>
+  <button class="button button-assertive" ng-click="showAlert()">警告</button>
+
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    angular.module("starter", ["ionic"]).controller("myCtrl", function ($scope, $ionicPopup) {
+      $scope.showPopup = function () {
+        $scope.data = {};
+        //自定义弹出框
+        let myPopup = $ionicPopup.show({
+          template: `<input type="password" ng-model="data.password"/>`,
+          title: "请输入密码",
+          subTitle: "8位数字和字母的组合",
+          scope: $scope,
+          buttons: [
+            {text: "取消"},
+            {
+              text: `<b>保存</b>`,
+              type: "button-positive",
+              onTap: function (e) {
+                if (!$scope.data.password) {
+                  //输入密码前不允许关闭
+                  e.preventDefault();
+                  console.log(!$scope.data.password)
+                } else {
+                  myPopup.close();
+                }
+              }
+            }
+          ]
+        });
+        myPopup.then(function () {
+          console.log("自定义弹出框关闭。");
+        });
+      };
+      //确认弹出框
+      $scope.showConfirm = function () {
+        let confirmPopup = $ionicPopup.confirm({
+          title: "提示",
+          template: "您是否同意用户协议"
+        });
+        confirmPopup.then(function (result) {
+          console.log(result ? "同意" : "不同意");
+        })
+      };
+      //警告弹出框
+      $scope.showAlert = function () {
+        let alertPopup = $ionicPopup.alert({
+          title: "提示",
+          template: "电量不足"
+        });
+        alertPopup.then(function () {
+          console.log("警告弹出框关闭了");
+
+        })
+      }
+    });
+  </script>
+</body>
+</html>

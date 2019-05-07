@@ -7,6 +7,17 @@
   <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
 </head>
 <body ng-app="starter" ng-controller="myCtrl">
+  <!--NOTE
+  $ionicLoading.show(options) 显示载入计时器
+  $ionicLoading.hide() 隐藏载入计时器
+
+  options.template: str
+  options.templateUrl: str
+  options.scope: object
+  options.noBackdrop: bool 是否隐藏背景幕。默认为false
+  options.delay: number 延时时间。以毫秒为单位。默认为0
+  options.duration: number 持续时间。以毫秒为单位。默认保持显示状态
+  -->
   <ion-view>
     <ion-header-bar class="royal-bg">
       <h1 class="title">菜品种类</h1>

@@ -24,9 +24,10 @@
       $ionicModal.fromTemplate(templateString: str, options: object) 通过模版和选项创建模态对话框对象
       $ionicModal.fromTemplateUrl(templateUrl: str, options: object) 通过模版路径和选项创建模态对话框对象
 
-      options: {scope: object, animation: str, focusFirstInput: bool, hardwareBackButtonClose: bool}
-      作用域对象 显示与隐藏的切换动画方式，默认为slide-in-up
-      显示时是否第一个输入控件获得焦点 点击返回按钮是否退出应用
+      options.scope: object 作用域对象
+      options.animation: str 显示与隐藏的切换动画方式，默认为slide-in-up
+      options.focusFirstInput: bool 显示时是否第一个输入控件获得焦点
+      options.hardwareBackButtonClose: bool 点击返回按钮是否退出应用
 
       modal.show()
       modal.hide()

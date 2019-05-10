@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>内容区域</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+</head>
+<body ng-app="starter">
+  <ion-header-bar class="bar-positive">
+    <h4 class="title">这里是头部</h4>
+  </ion-header-bar>
+
+  <!--NOTE
+      prop delegate-handle str 标识带有$ionicScrollDelegate的滚动视图
+      prop padding bool 设置是否在内容上添加内边距。ios默认为true，android默认为false
+      prop scroll bool 设置是否允许内容滚动，默认为true
+      prop overflow-scroll bool 设置是否允许使用流浪器本身内置的溢出滚动功能代替ionic滚动。默认为aflse
+      prop has-bouncing bool 设置是否允许内容滚动反弹到边缘。ios默认为true，android默认为false
+      event on-scroll exp 当内容滚动时触发
+      event on-scroll-complete(scrollLeft?: number, scrollRight?: number) exp 当滚动动作完成时触发
+  -->
+
+  <ion-content ng-controller="myCtrl" on-scroll="onScroll()" on-scroll-complete="onScrollComplete()">
+    <h1>美丽的海岛</h1>
+    <img src="#"/>
+  </ion-content>
+
+  <ion-footer-bar class="bar-positive">
+    <h4 class="title">这里是底部</h4>
+  </ion-footer-bar>
+
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    angular.module("start", ["ionic"]).controller("myCtrl", function ($scope) {
+      $scope.onScroll = function () {
+        console.log("正在滚动！");
+      };
+      $scope.$onScrollComplete = function (scrollLeft, scrollTop) {
+        console.log(`当前滚动位置：${scrollLeft}, ${scrollTop}`);
+      }
+    });
+  </script>
+</body>
+</html>

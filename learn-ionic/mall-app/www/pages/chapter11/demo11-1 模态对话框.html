@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>模态对话框</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+</head>
+<body ng-app="starter" ng-controller="myCtrl">
+  <ion-header-bar class="bar-royal">
+    <h2 class="title">联系人</h2>
+    <div class="buttons">
+      <button class="button button-icon ion-person-add" ng-click="modal.show()"></button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="contact in contacts">{{contact.name}}</ion-item>
+    </ion-list>
+  </ion-content>
+
+  <!--NOTE
+      $ionicModal.fromTemplate(templateString: str, options: object) 通过模版和选项创建模态对话框对象
+      $ionicModal.fromTemplateUrl(templateUrl: str, options: object) 通过模版路径和选项创建模态对话框对象
+
+      options.scope: object 作用域对象
+      options.animation: str 显示与隐藏的切换动画方式，默认为slide-in-up
+      options.focusFirstInput: bool 显示时是否第一个输入控件获得焦点
+      options.hardwareBackButtonClose: bool 点击返回按钮是否退出应用
+
+      modal.show()
+      modal.hide()
+      modal.remove()
+      modal.isShown()
+  -->
+  <script id="template/modal.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-header-bar class="bar bar-header bar-royal">
+        <h2 class="title">添加联系人</h2>
+        <button class="button button-clear button-balanced" ng-click="modal.hide()">取消</button>
+      </ion-header-bar>
+      <ion-content class="padding">
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">请输入姓名</span>
+            <input ng-model="user.name" type="text">
+          </label>
+          <button class="button button-full button-balanced" ng-click="addContact(user)">添加</button>
+        </div>
+      </ion-content>
+    </ion-modal-view>
+  </script>
+
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    angular.module("starter", ["ionic"]).controller("myCtrl", function ($scope, $ionicModal) {
+      $scope.contacts = [
+        {name: "小红"}
+      ];
+      //使用内联模版创建模态对话框对象
+      $ionicModal.fromTemplateUrl("template/modal.html", {
+        scope: $scope
+      }).then(function (modal) {
+        $scope.modal = modal;
+      });
+      //添加联系人的方法
+      $scope.addContact = function (user) {
+        $scope.contacts.push({name: user.name});
+        $scope.modal.hide();
+      }
+    })
+  </script>
+</body>
+</html>

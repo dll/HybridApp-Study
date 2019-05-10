@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>模版视图与视图容器</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+</head>
+<body ng-app="starter">
+  <ion-nav-view><i>模版内容将会加载到此处</i></ion-nav-view>
+
+  <!-- 模版视图的代码必须写在ion-view里面，使用script标签的id顺序声明模拟url-->
+
+  <script id="template/page1.html" type="text/ng-template">
+    <!--NOTE
+        prop title str
+        prop hide-back-button bool
+        prop hide-nav-bar bool
+        prop cache-view bool 设置视图是否会被缓存。默认为true
+        prop can-swipe-back bool 是否允许视图使用滑动手势返回上一页。默认为true
+    -->
+    <ion-view>
+      <ion-content class="calm-bg">
+        <p>这是第一个页面</p>
+        <a class="button" ui-sref="two">转到页面2</a>
+      </ion-content>
+    </ion-view>
+  </script>
+
+  <script id="template/page2.html" type="text/ng-template">
+    <ion-view>
+      <ion-content class="royal-bg">
+        <p>这是第一个页面</p>
+        <a class="button" ui-sref="three">转到页面3</a>
+      </ion-content>
+    </ion-view>
+  </script>
+
+  <script id="template/page3.html" type="text/ng-template">
+    <ion-view>
+      <ion-content class="energized-bg">
+        <p>这是第一个页面</p>
+        <a class="button" ui-sref="one">转到页面1</a>
+      </ion-content>
+    </ion-view>
+  </script>
+
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../js/app.js"></script>
+
+  <!--NOTE
+      method $ionicView.state(stateName: str, {url: str, templateUrl: str})
+
+      event $ionicView.loaded
+      event $ionicView.enter
+      event $ionicView.leave
+      event $ionicView.beforeEnter
+      event $ionicView.beforeLeave
+      event $ionicView.afterEnter
+      event $ionicView.unloaded
+  -->
+
+  <script>
+    angular.module("starter", ["ionic"]).config(function ($stateProvider, $urlRouterProvider) {
+      //使用$stateProvider来配置状态路由
+      $stateProvider
+        .state("one", {
+          url: "/one",
+          templateUrl: "template/page1.html"
+        })
+        .state("two", {
+          url: "/two",
+          templateUrl: "template/page2.html"
+        })
+        .state("three", {
+          url: "/three",
+          templateUrl: "template/page3.html"
+        });
+
+      //匹配失败的情况，注意调用的是$urlRouteProvider
+      $urlRouterProvider.otherwise("/one");
+    })
+
+  </script>
+</body>
+</html>

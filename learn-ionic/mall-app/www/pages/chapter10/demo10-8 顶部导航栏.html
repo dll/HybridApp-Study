@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>定制顶部导航栏</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+</head>
+<body ng-app="starter" ng-controller="myCtrl">
+  <!--NOTE
+      prop delegate-handle str 定义一个用$ionicNavBarDelegate 获取本地组件对象的句柄名称
+      prop align title left|right|center 默认为center
+
+      method $ionNavBarDelegate.title(title: str)
+      method $ionNavBarDelegate.align(direction?: left|center|right)  默认为center
+      method $ionNavBarDelegate.showBar(show: bool) 设置导航栏是否显示
+      method $ionNavBarDelegate.showBackButton(show?: bool) 设置是否显示后退按钮
+  -->
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-back-button>返回</ion-nav-back-button>
+  </ion-nav-bar>
+
+  <ion-nav-view><i>模版内容将会加载到此处</i></ion-nav-view>
+
+  <script id="template/page1.html" type="text/ng-template">
+    <ion-view>
+      <ion-nav-title>page1</ion-nav-title>
+      <ion-nav-buttons side="secondary">
+        <a class="button">收藏</a>
+        <a class="button" ui-sref="two">下一页</a>
+      </ion-nav-buttons>
+      <ion-content class="calm-bg">
+        <p>这是页面1</p>
+      </ion-content>
+    </ion-view>
+  </script>
+
+  <script id="template/page2.html" type="text/ng-template">
+    <ion-view>
+      <ion-content class="royal-bg">
+        <p>这是页面1</p>
+        <a class="button" ng-click="setTitle()">设置标题</a>
+      </ion-content>
+    </ion-view>
+  </script>
+
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    let app = angular.module("starter", ["ionic"]);
+    app.config(function ($stateProvider, $urlRouterProvider) {
+      $stateProvider
+        .state("one", {
+          url: "/one",
+          templateUrl: "template/page1.html"
+        })
+        .state("two", {
+          url: "/two",
+          templateUrl: "template/page2.html"
+        });
+      $urlRouterProvider.otherwise("/one");
+    });
+    app.controller("myCtrl", function ($scope, $ionicNavBarDelegate) {
+      $scope.setTitle = function () {
+        $ionicNavBarDelegate.title("这是页面2");
+      }
+    })
+  </script>
+</body>
+</html>

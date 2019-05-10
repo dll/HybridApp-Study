@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>侧边栏菜单</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="../../lib/ionic/css/ionic.min.css">
+  <style>
+    html, body {
+      height: 100%;
+    }
+    /*ion-item {*/
+    /*  height: 52px !important;*/
+    /*}*/
+    /*高度的变化是附着在.item-avatar上的*/
+    /*.ion-item {*/
+    /*  height: 52px;*/
+    /*  line-height: 52px;*/
+    /*  min-height: 52px;*/
+    /*  max-height: 52px;*/
+    /*}*/
+    .item-avatar {
+      /*height: 54px !important;*/
+      min-height: 54px !important;
+      max-height: 54px !important;
+    }
+    .item-content {
+      /*height: 52px !important;*/
+      min-height: 52px !important;
+      max-height: 52px !important;
+    }
+    .item-content img {
+      /*float: left;*/
+      /*position: absolute !important;*/
+      top: 0 !important;
+      /*vertical-align: middle;*/
+      /*height: 100%;*/
+      min-height: 52px !important;
+      min-width: 52px !important;
+      /*position: absolute;*/
+      /*top: 50%;*/
+      /*left: 50%;*/
+      /*margin-top: -26px; !* 高度的一半 *!*/
+      /*margin-left: -26px; !* 宽度的一半 *!*/
+    }
+  </style>
+</head>
+<body ng-app="starter">
+  <ion-side-menus>
+    <!--中间内容-->
+    <!--NOTE
+        prop drag-content bool 是否允许拖动内容打开侧栏菜单。默认为true
+        prop edge-drag-threshold bool|number 是否启用边距检测。默认为false，此时使用默认的25px作为边距阈值
+    -->
+    <ion-side-menu-content ng-controller="myCtrl">
+      <ion-header-bar align-title="left" class="bar-positive">
+        <button class="button button-icon icon ion-navicon" ng-click="toggleLeft()"></button>
+        <h1 class="title" style="text-align:center;">小蓝书</h1>
+      </ion-header-bar>
+      <button class="button button-icon icon ion-android-cart"></button>
+      <ion-content>
+        商品展示区域
+      </ion-content>
+    </ion-side-menu-content>
+
+    <!--左侧菜单-->
+    <!--NOTE
+        prop side left|right 侧栏菜单当前在哪一边
+        prop is-enabled bool 可选，该侧栏菜单是否可用
+        prop width number 可选，侧栏菜单的宽度。默认为275（相对宽度）
+
+        method $ionicSideMenuDelegate.toggleLeft(isOpen?: bool) 是否打开左侧菜单。默认为true
+        method $ionicSideMenuDelegate.toggleRight(isOpen?: bool)
+        method $ionicSideMenuDelegate.getOpenRatio() 侧栏菜单打开的宽度占其总宽度的比例
+        method $ionicSideMenuDelegate.isOpen()
+        method $ionicSideMenuDelegate.isOpenLeft()
+        method $ionicSideMenuDelegate.isOpenRight()
+        method $ionicSideMenuDelegate.canDragContent(canDrag?: bool)
+        method $ionicSideMenuDelegate.edgeDragThreshold(value?: bool|number) 设置边框距离阈值
+        method $ionicSideMenuDelegate.$getByHandle(handle: str) 返回参数所指定的侧边栏实例
+    -->
+    <ion-side-menu side="left" width="250">
+      <header class="bar bar-header bar-stable">
+        <h1 class="title">个人中心</h1>
+      </header>
+      <ion-content class="has-header">
+        <ion-list>
+          <ion-item nav-clear menu-close class="item-avatar" href="#">
+            <img src="img/demo10-12/abby.jpg">
+            Abby
+          </ion-item>
+          <ion-item nav-clear menu-close href="#">
+            我的收货地址
+          </ion-item>
+          <ion-item nav-clear menu-close href="#">
+            账户与安全
+          </ion-item>
+          <ion-item nav-clear menu-close href="#">
+            隐私
+          </ion-item>
+          <ion-item nav-clear menu-close href="#">
+            通用
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu>
+  </ion-side-menus>
+
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    angular.module("starter", ["ionic"]).controller("myCtrl", function ($scope, $ionicSideMenuDelegate) {
+      $scope.toggleLeft = function () {
+        $ionicSideMenuDelegate.toggleLeft();
+      };
+    });
+  </script>
+</body>
+</html>

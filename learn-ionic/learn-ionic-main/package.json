@@ -1,7 +1,7 @@
 {
-  "name": "myapp",
+  "name": "learn-ionic-main",
   "version": "1.1.1",
-  "description": "myapp: An Ionic project",
+  "description": "learn-ionic-main: An Ionic project",
   "devDependencies": {
     "gulp": "^3.5.6",
     "gulp-clean-css": "^3.7.0",

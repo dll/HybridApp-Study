@@ -15555,8 +15555,8 @@
              * <div class="alert alert-warning">
              * **Note:** Filter names must be valid angular {@link expression} identifiers, such as `uppercase` or `orderBy`.
              * Names with special characters, such as hyphens and dots, are not allowed. If you wish to namespace
-             * your filters, then you can use capitalization (`myappSubsectionFilterx`) or underscores
-             * (`myapp_subsection_filterx`).
+             * your filters, then you can use capitalization (`learn-ionic-mainSubsectionFilterx`) or underscores
+             * (`learn-ionic-main_subsection_filterx`).
              * </div>
              */
             filter: invokeLaterAndSetModuleName('$filterProvider', 'register'),
@@ -19888,8 +19888,8 @@
    * Adding via the `$templateCache` service:
    *
    * ```js
-   * var myApp = angular.module('myApp', []);
-   * myApp.run(function($templateCache) {
+   * var learn-ionic-main = angular.module('learn-ionic-main', []);
+   * learn-ionic-main.run(function($templateCache) {
    *   $templateCache.put('templateId.html', 'This is the content of the template');
    * });
    * ```
@@ -24434,10 +24434,13 @@
           });
         };
 
+
+
         $scope.updateModel = function(method, url) {
           $scope.method = method;
           $scope.url = url;
         };
+
       }]);
          </file>
          <file name="http-hello.html">
@@ -24888,7 +24891,7 @@
    * Replace or decorate this service to create your own custom XMLHttpRequest objects.
    *
    * ```
-   * angular.module('myApp', [])
+   * angular.module('learn-ionic-main', [])
    * .factory('$xhrFactory', function() {
    *   return function createXhr(method, url) {
    *     return new window.XMLHttpRequest({mozSystem: true});
@@ -31036,15 +31039,15 @@
    *
    * **Example**:  Consider the following case. <a name="example"></a>
    *
-   * - your app is hosted at url `http://myapp.example.com/`
+   * - your app is hosted at url `http://learn-ionic-main.example.com/`
    * - but some of your templates are hosted on other domains you control such as
    *   `http://srv01.assets.example.com/`,  `http://srv02.assets.example.com/`, etc.
-   * - and you have an open redirect at `http://myapp.example.com/clickThru?...`.
+   * - and you have an open redirect at `http://learn-ionic-main.example.com/clickThru?...`.
    *
    * Here is what a secure configuration for this scenario might look like:
    *
    * ```
-   *  angular.module('myApp', []).config(function($sceDelegateProvider) {
+   *  angular.module('learn-ionic-main', []).config(function($sceDelegateProvider) {
    *    $sceDelegateProvider.resourceUrlWhitelist([
    *      // Allow same origin resource loads.
    *      'self',
@@ -31054,7 +31057,7 @@
    *
    *    // The blacklist overrides the whitelist so the open redirect here is blocked.
    *    $sceDelegateProvider.resourceUrlBlacklist([
-   *      'http://myapp.example.com/clickThru**'
+   *      'http://learn-ionic-main.example.com/clickThru**'
    *    ]);
    *  });
    * ```
@@ -31589,7 +31592,7 @@
    * That said, here's how you can completely disable SCE:
    *
    * ```
-   * angular.module('myAppWithSceDisabledmyApp', []).config(function($sceProvider) {
+   * angular.module('learn-ionic-mainWithSceDisabledlearn-ionic-main', []).config(function($sceProvider) {
    *   // Completely disable SCE.  For demonstration purposes only!
    *   // Do not use in new projects.
    *   $sceProvider.enabled(false);
@@ -32628,8 +32631,8 @@
    * <div class="alert alert-warning">
    * **Note:** Filter names must be valid angular {@link expression} identifiers, such as `uppercase` or `orderBy`.
    * Names with special characters, such as hyphens and dots, are not allowed. If you wish to namespace
-   * your filters, then you can use capitalization (`myappSubsectionFilterx`) or underscores
-   * (`myapp_subsection_filterx`).
+   * your filters, then you can use capitalization (`learn-ionic-mainSubsectionFilterx`) or underscores
+   * (`learn-ionic-main_subsection_filterx`).
    * </div>
    *
    * ```js
@@ -32718,8 +32721,8 @@
      *    <div class="alert alert-warning">
      *    **Note:** Filter names must be valid angular {@link expression} identifiers, such as `uppercase` or `orderBy`.
      *    Names with special characters, such as hyphens and dots, are not allowed. If you wish to namespace
-     *    your filters, then you can use capitalization (`myappSubsectionFilterx`) or underscores
-     *    (`myapp_subsection_filterx`).
+     *    your filters, then you can use capitalization (`learn-ionic-mainSubsectionFilterx`) or underscores
+     *    (`learn-ionic-main_subsection_filterx`).
      *    </div>
      * @param {Function} factory If the first argument was a string, a factory function for the filter to be registered.
      * @returns {Object} Registered filter instance, or if a map of filters was provided then a map
@@ -49317,14 +49320,14 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
    *
    * <pre>
    * <!doctype html>
-   * <html ng-app="myApp">
+   * <html ng-app="learn-ionic-main">
    * <head>
    *   <script src="js/angular.js"></script>
    *   <!-- Include the ui-router script -->
    *   <script src="js/angular-ui-router.min.js"></script>
    *   <script>
    *     // ...and add 'ui.router' as a dependency
-   *     var myApp = angular.module('myApp', ['ui.router']);
+   *     var learn-ionic-main = angular.module('learn-ionic-main', ['ui.router']);
    *   </script>
    * </head>
    * <body>
@@ -54948,9 +54951,9 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
    *
    * @usage
    * ```js
-   * var myApp = angular.module('reallyCoolApp', ['ionic']);
+   * var learn-ionic-main = angular.module('reallyCoolApp', ['ionic']);
    *
-   * myApp.config(function($ionicConfigProvider) {
+   * learn-ionic-main.config(function($ionicConfigProvider) {
    *   $ionicConfigProvider.views.maxCache(5);
    *
    *   // note that you can also chain configs
@@ -55625,7 +55628,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
    *
    * @usage
    * ```js
-   * var app = angular.module('myApp', ['ionic'])
+   * var app = angular.module('learn-ionic-main', ['ionic'])
    * app.constant('$ionicLoadingConfig', {
    *   template: 'Default Loading Template...'
    * });
@@ -57779,7 +57782,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * in the `$state` definition
      *
      * ```js
-     *   angular.module('myApp', ['ionic'])
+     *   angular.module('learn-ionic-main', ['ionic'])
      *   .config(function($stateProvider, $ionicConfigProvider) {
      *
      *     // disable preemptive template caching globally
@@ -58605,13 +58608,13 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
    * For example:
    *
    * ```
-   * angular.module('myApp', ['ngRoute'])`
+   * angular.module('learn-ionic-main', ['ngRoute'])`
    * ```
    *
    * becomes
    *
    * ```
-   * angular.module('myApp', ['ngRoute', 'ngIOS9UIWebViewPatch'])
+   * angular.module('learn-ionic-main', ['ngRoute', 'ngIOS9UIWebViewPatch'])
    * ```
    *
    *
@@ -65497,7 +65500,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
    * Next, we need to setup our states that will be rendered.
    *
    * ```js
-   * var app = angular.module('myApp', ['ionic']);
+   * var app = angular.module('learn-ionic-main', ['ionic']);
    * app.config(function($stateProvider) {
    *   $stateProvider
    *   .state('index', {

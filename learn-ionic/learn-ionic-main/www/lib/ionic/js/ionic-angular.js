@@ -1552,9 +1552,9 @@
    *
    * @usage
    * ```js
-   * var myApp = angular.module('reallyCoolApp', ['ionic']);
+   * var learn-ionic-main = angular.module('reallyCoolApp', ['ionic']);
    *
-   * myApp.config(function($ionicConfigProvider) {
+   * learn-ionic-main.config(function($ionicConfigProvider) {
    *   $ionicConfigProvider.views.maxCache(5);
    *
    *   // note that you can also chain configs
@@ -2229,7 +2229,7 @@
    *
    * @usage
    * ```js
-   * var app = angular.module('myApp', ['ionic'])
+   * var app = angular.module('learn-ionic-main', ['ionic'])
    * app.constant('$ionicLoadingConfig', {
    *   template: 'Default Loading Template...'
    * });
@@ -4383,7 +4383,7 @@
      * in the `$state` definition
      *
      * ```js
-     *   angular.module('myApp', ['ionic'])
+     *   angular.module('learn-ionic-main', ['ionic'])
      *   .config(function($stateProvider, $ionicConfigProvider) {
      *
      *     // disable preemptive template caching globally
@@ -5209,13 +5209,13 @@
    * For example:
    *
    * ```
-   * angular.module('myApp', ['ngRoute'])`
+   * angular.module('learn-ionic-main', ['ngRoute'])`
    * ```
    *
    * becomes
    *
    * ```
-   * angular.module('myApp', ['ngRoute', 'ngIOS9UIWebViewPatch'])
+   * angular.module('learn-ionic-main', ['ngRoute', 'ngIOS9UIWebViewPatch'])
    * ```
    *
    *
@@ -12101,7 +12101,7 @@
    * Next, we need to setup our states that will be rendered.
    *
    * ```js
-   * var app = angular.module('myApp', ['ionic']);
+   * var app = angular.module('learn-ionic-main', ['ionic']);
    * app.config(function($stateProvider) {
    *   $stateProvider
    *   .state('index', {

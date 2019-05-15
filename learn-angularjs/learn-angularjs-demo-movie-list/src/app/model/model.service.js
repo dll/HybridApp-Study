@@ -1,8 +1,8 @@
-let modelModule = angular.module("ModelModule", ["JsonpModule"]);
+let modelModule = angular.module("model", ["jsonp"]);
 /**
  * 模型服务。
  */
-modelModule.service("ModelService", function(JsonpService) {
+modelModule.service("modelService", function(jsonpService) {
 	//即将上映
 	this.getComingSoon = function(start, count, callback) {
 		let url = `http://api.douban.com/v2/movie/coming_soon?start=${start}&count=${count}&callback=JSON_CALLBACK`;

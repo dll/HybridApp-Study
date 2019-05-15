@@ -1,9 +1,9 @@
-let movieListModule = angular.module("MovieListModule", ["PageConfigModule", "ModelModule"]);
+let movieListModule = angular.module("movieList", ["pageConfig", "model"]);
 /**
  * 电影列表的控制器。
  * NOTE 控制器在Angular中是不存在的。
  */
-movieListModule.controller("MovieListController", function($scope, $routeParams, PageConfigService, ModelService) {
+movieListModule.controller("movieListController", function($scope, $routeParams, pageConfigService, modelService) {
 	$scope.name = "电影列表";
 	$scope.params = $routeParams;
 	//获取列表的类别

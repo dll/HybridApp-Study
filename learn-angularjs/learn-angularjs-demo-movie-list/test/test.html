@@ -13,8 +13,8 @@
 	<script src="../src/app/jsonp/jsonp.service.js"></script>
 	<script src="../src/app/model/model.service.js"></script>
 	<script>
-		let testModule = angular.module("TestModule", ["JsonpModule", "ModelModule"]);
-		testModule.controller("TestController", function($scope, $http, ModelService) {
+    let testModule = angular.module("TestModule", ["jsonp", "model"]);
+    testModule.controller("TestController", function($scope, $http, modelService) {
 			ModelService.getTop250(0, 10, function(data) {
 				console.log(data)
 			});

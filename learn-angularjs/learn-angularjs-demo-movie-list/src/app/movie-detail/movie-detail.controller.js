@@ -1,8 +1,8 @@
-let movieDetailModule = angular.module("MovieDetailModule", ["ModelModule"]);
+let movieDetailModule = angular.module("movieDetail", ["model"]);
 /**
  * 电影详情的控制器。
  */
-movieDetailModule.controller("MovieDetailController", function($scope, $routeParams, ModelService) {
+movieDetailModule.controller("movieDetailController", function($scope, $routeParams, modelService) {
 	$scope.name = "电影详情";
 	let subjectId = $routeParams.id;
 	//调用服务获取电影详情

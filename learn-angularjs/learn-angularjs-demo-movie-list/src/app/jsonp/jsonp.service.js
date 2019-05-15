@@ -1,8 +1,8 @@
-let jsonpModule = angular.module("JsonpModule", []);
+let jsonpModule = angular.module("jsonp", []);
 /**
  * 自定义的Jsonp服务。
  */
-jsonpModule.service("JsonpService", function($rootScope) {
+jsonpModule.service("jsonpService", function($rootScope) {
 	//计数器变量
 	let count = 0;
 	/**

@@ -1,3 +1,3 @@
-# HybridApp-Study
+# 概述
 
-［FrontEnd］混合App开发学习
+混合App开发学习。
